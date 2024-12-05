@@ -1,6 +1,8 @@
-[build]
-  command = "npm run build && next export"
-  publish = "out"
+[[redirects]]
+  from = "/_next/static/*"
+  to = "/_next/static/:splat"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/*"
