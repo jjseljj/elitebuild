@@ -1,0 +1,7 @@
+@import "@/src/Sections/Navbar/Navbar.css";
+@import "@/src/Sections/Header/Header.css";
+@import "@/src/Sections/ProductAction/ProductAction.css";
+@import "@/src/Sections/DeliveryOptions/DeliveryOptions.css";
+@import "@/src/Sections/PaymentOptions/PaymentOptions.css";
+@import "@/src/Sections/LeaveRequestForm/LeaveRequestForm.css";
+@import "@/src/Sections/Footer/Footer.css";
