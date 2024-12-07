@@ -5,3 +5,9 @@
 @import "@/src/Sections/PaymentOptions/PaymentOptions.css";
 @import "@/src/Sections/LeaveRequestForm/LeaveRequestForm.css";
 @import "@/src/Sections/Footer/Footer.css";
+
+@import "@/src/Sections/DeliveryInfo/DeliveryInfo.css";
+@import "@/src/Sections/PaymentInfo/PaymentInfo.css";
+@import "@/src/Sections/ReturnsInfo/ReturnsInfo.css";
+@import "@/src/Sections/ProductInfo/ProductInfo.css";
+@import "@/src/Sections/RelatedProducts/RelatedProducts.css";

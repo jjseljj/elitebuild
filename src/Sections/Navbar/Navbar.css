@@ -1,9 +1,22 @@
+
+.navbar {
+  width: 100%;
+  max-width: 1440px;
+  height: 192px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/*
 .navbar {
     width: 1406px;
     height: 192px;
     margin-left: 15px;
     margin-right: 20px;
-  }
+  }*/
   .navbar-middle__logo-mobile {
     display: none;
   }
@@ -251,7 +264,12 @@
     margin-top: 42px;    
   }
   
-  
+  @media (max-width: 1440px) {
+    .navbar {
+        width: 100%;
+        padding: 0 20px;
+    }
+}
   
   @media (max-width: 320px) {
     .navbar {

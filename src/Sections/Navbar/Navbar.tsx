@@ -9,7 +9,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="navbar-middle__logo-mobile">
         <img src="/images/logo.png" alt="Логотип ПрестижСтрой" />
-    </div>
+      </div>
 
       {/* Верхний блок */}
       <div className="navbar-top">
