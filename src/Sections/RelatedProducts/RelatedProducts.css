@@ -8,6 +8,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     padding: 0 20px;
+    margin-bottom: 109px;
 }
 .related-products__title {
     font-family: Inter;
@@ -35,15 +36,70 @@
     width: 335.17px;
     max-height: 400px; 
     height: auto; 
-    border: 1px solid #909090;
+    border: 1px solid var(--background-light-blue-2);
+    position: relative;
 }
 .related-products__image {
     width: 250px;
     height: 200px;
 }
 
+/*---------*/
+.related-products__image-wrapper {
+   /* border: 1px solid #e0e0e0;
+    box-sizing: border-box;*/
+    position: relative;
+    width: 200px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.related-products__icon--prev,
+.related-products__icon--next {
+  width: 30px;
+  height: 30px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--background-light-blue-2);
+  color: var(--text-dark-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.related-products__icon--prev {
+  left: -10px;
+}
+
+.related-products__icon--next {
+  right: -10px;
+}
+
+.related-products__image-wrapper {
+  position: relative;
+  width: 250px;
+  height: 200px;
+}
+/*---------*/
+
+.related-products__heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 60px;
+    font-size: 24px;
+    color: var(--background-dark-blue);
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+  
 .related-products__name {
     Width: 250px;
+    Height: 22px;
     font-family: Inter;
     font-size: 18px;
     font-weight: 500;
@@ -54,10 +110,9 @@
     color: var(--text-dark-blue);
     margin-top: 25px;
     margin-bottom: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    
+    white-space: nowrap;    
+    text-overflow: ellipsis;  
+    overflow: hidden;  
 }
 .related-products__article {
     font-family: Inter;
@@ -79,7 +134,7 @@
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     color: var(--background-dark-blue);
-    margin-bottom: 37px;
+    margin-bottom: 30px;
 }
 
 
@@ -127,7 +182,7 @@
     background-color: #fff;
     border: none;
     cursor: pointer;
-    border: 1px solid #909090;
+    border: 1px solid var(--background-light-blue-2);
 }
 
 .related-products-actions__value {
@@ -135,7 +190,7 @@
     height: 38px;
     flex: 1;
     text-align: center;
-    border: 1px solid #909090;
+    border: 1px solid var(--background-light-blue-2);
 }
 
 .related-products-actions__value-text {

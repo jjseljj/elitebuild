@@ -2,6 +2,8 @@ import React from 'react'
 import Navbar from '@/src/Sections/Navbar/Navbar'
 import ProductInfo from '../src/Sections/ProductInfo/ProductInfo'
 import RelatedProducts from '../src/Sections/RelatedProducts/RelatedProducts'
+import PopularProducts from '../src/Sections/PopularProducts/PopularProducts'
+import ProductAccessories from '../src/Sections/ProductAccessories/ProductAccessories'
 import Footer from '../src/Sections/Footer/Footer'
 
 const ProductPage = () => {
@@ -9,7 +11,9 @@ const ProductPage = () => {
     <>
       <Navbar/>
       <ProductInfo  /> 
-      <RelatedProducts />      
+      <RelatedProducts />
+      <PopularProducts />   
+      <ProductAccessories />   
       <Footer />    
     </>
   )

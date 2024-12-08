@@ -203,8 +203,14 @@
     align-items: center;
     justify-content: center;
     background: none;
-    border: none;
+    border: none;  
   }
+  .navbar-middle__service-wrapper a {
+    text-decoration: none;
+  }
+  
+ 
+  
   
   .navbar-middle__icon-wrapper {
     display: flex;

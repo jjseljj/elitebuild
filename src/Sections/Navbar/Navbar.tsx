@@ -3,6 +3,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoSearchSharp } from "react-icons/io5";
 import { MdMenu } from "react-icons/md";
+import Link from 'next/link';
 
 const Navbar = () => {
   return (
@@ -46,30 +47,44 @@ const Navbar = () => {
           </div>
         </div>
         <nav className="navbar-middle__icons">
+        <div className="navbar-middle__service-wrapper">
+        <Link href="/services">
           <button className="navbar-middle__service">
             <div className="navbar-middle__icon-wrapper">
               <img src="/images/сервисы.svg" alt="Сервисы" className="navbar-middle__icon" />
               <p className="navbar-middle__icon-text">Сервисы</p>
             </div>
           </button>
+        </Link>
+        </div>
+
+          <Link href="/Comparison">
           <button className="navbar-middle__comparison">
             <div className="navbar-middle__icon-wrapper">
               <img src="/images/сравнение.svg" alt="Сравнение" className="navbar-middle__icon" />
               <p className="navbar-middle__icon-text">Сравнение</p>
             </div>
           </button>
+          </Link>
+
+          <Link href="/Favorites">          
           <button className="navbar-middle__favorites">
             <div className="navbar-middle__icon-wrapper">
               <img src="/images/отложенные.svg" alt="Отложенные" className="navbar-middle__icon" />
               <p className="navbar-middle__icon-text">Отложенные</p>
             </div>
           </button>
+          </Link>
+
+          <Link href="/cart">
           <button className="navbar-middle__cart">
             <div className="navbar-middle__icon-wrapper">
               <img src="/images/корзина.svg" alt="Корзина" className="navbar-middle__icon" />
               <p className="navbar-middle__icon-text">Корзина</p>
             </div>
           </button>
+          </Link>
+
         </nav>
 
       </div>
