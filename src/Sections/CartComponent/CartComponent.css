@@ -1,0 +1,62 @@
+.cart {
+    max-width: 1440px;
+    height: 1340px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0 20px;    
+}
+
+.cart__breadcrumb {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.94px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: var(--text-dark-blue);
+    white-space: nowrap;
+    margin-top: 50px;
+    margin-bottom: 36px;
+}
+
+.cart__breadcrumb a {
+    text-decoration: none;
+    color: var(--text-dark-blue);
+}
+
+.cart__title {
+    font-family: Inter;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 48.41px;
+    text-align: left;
+    color: var(--background-dark-blue);
+    margin-bottom: 25px;
+}
+.cart__section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30.26px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: var(--background-dark-blue);
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+.cart__contact-input {
+    width: 927px;
+    height: 50px;
+    border: 1px solid var(--background-light-blue-2);
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 0 10px;
+}

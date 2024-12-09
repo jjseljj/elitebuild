@@ -15,5 +15,9 @@
 @import "@/src/Sections/ProductAccessories/ProductAccessories.css";
 @import "@/src/Sections/FavoriteProducts/FavoriteProducts.css";
 @import "@/src/Sections/ComparisonProducts/ComparisonProducts.css";
-@import "@/src/Sections/SubcategoryProducts/SubcategoryProducts";
-@import "@/src/Sections/SubcategoryProducts2/SubcategoryProducts2";
+@import "@/src/Sections/SubcategoryProducts/SubcategoryProducts.css";
+@import "@/src/Sections/SubcategoryProducts2/SubcategoryProducts2.css";
+@import "@/src/Sections/SubcategoryProducts3/SubcategoryProducts3.css";
+@import "@/src/Sections/SubcategoryProducts4/SubcategoryProducts4.css";
+@import "@/src/Sections/CartComponent/CartComponent.css";
+

@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { productData, manufacturers, colors } from '@/src/source';
 import Link from 'next/link';
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import { IoCheckboxSharp } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io"; 
+import { IoIosHeartEmpty } from "react-icons/io";
+import { IoHeart } from "react-icons/io5";
+import { getSavedProducts, saveProduct, removeProduct } from "@/services/storageHelpers";
 
 const SubcategoryProducts = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState<Record<number, number>>(
@@ -134,7 +137,32 @@ const SubcategoryProducts = () => {
     });
 
 
-
+    const [likedProducts, setLikedProducts] = useState<Record<number, boolean>>({});
+    const [savedProducts, setSavedProducts] = useState<any[]>([]);
+    
+    useEffect(() => {
+      const saved = getSavedProducts();
+      setSavedProducts(saved);
+      const liked = saved.reduce((acc: Record<number, boolean>, product: any) => {
+        acc[product.id] = true;
+        return acc;
+      }, {});
+      setLikedProducts(liked);
+    }, []);
+    
+    const toggleLike = (product: any) => {
+      const isLiked = likedProducts[product.id];
+    
+      if (isLiked) {
+        removeProduct(product.id);
+        setLikedProducts((prev) => ({ ...prev, [product.id]: false }));
+        setSavedProducts((prev) => prev.filter((p) => p.id !== product.id));
+      } else {
+        saveProduct(product);
+        setLikedProducts((prev) => ({ ...prev, [product.id]: true }));
+        setSavedProducts((prev) => [...prev, product]);
+      }
+    };
   return (
     <section className="subcategory-products">
         <div className="subcategory-products__breadcrumb">
@@ -242,7 +270,7 @@ const SubcategoryProducts = () => {
             <div className="subcategory-products__list">
             {filteredByPriceProductData.map((product) => (
                 <div key={product.id} className="subcategory-products__item">
-                    <div className="subcategory-products__image-wrapper">
+                    <div className="subcategory-products__image-wrapper">                        
                     <button
                         className="subcategory-products__image-button subcategory-products__image-button--prev"
                         onClick={() => handleImageChange(product.id, 'prev')}
@@ -265,7 +293,18 @@ const SubcategoryProducts = () => {
                     >
                         <MdKeyboardArrowRight className="subcategory-products__icon--next" />
                     </button>
-                    </div>
+                    </div> 
+                    <button
+                        className="subcategory-products__heart-button"
+                        onClick={() => toggleLike(product)}
+                        >
+                        {likedProducts[product.id] ? (
+                            <IoHeart className="subcategory-products__heart-icon active" />
+                        ) : (
+                            <IoIosHeartEmpty className="subcategory-products__heart-icon" />
+                        )}
+                    </button>                
+
 
                     <p className="subcategory-products__name">{product.name}</p>
                     <p className="subcategory-products__article">Артикул: {product.article}</p>

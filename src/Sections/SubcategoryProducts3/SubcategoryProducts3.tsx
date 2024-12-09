@@ -10,7 +10,7 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import { IoHeart } from "react-icons/io5";
 import { saveProduct, removeProduct, getSavedProducts } from '@/services/storageHelpers';
 
-const SubcategoryProducts2 = () => {
+const SubcategoryProducts3 = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState<Record<number, number>>(
     productData.reduce((acc, product) => {
       acc[product.id] = 0;
@@ -184,8 +184,8 @@ const toggleLike = (product: any) => {
   
   
   return (
-    <section className="subcategory-products2">
-      <div className="subcategory-products2__breadcrumb">
+    <section className="subcategory-products3">
+      <div className="subcategory-products3__breadcrumb">
         <Link href="/">Главная</Link>
         {" / "}
         <Link href="/catalog">
@@ -201,59 +201,59 @@ const toggleLike = (product: any) => {
         </Link>
       </div>
 
-      <h2 className="subcategory-products2__title">Подкатегория2</h2>
+      <h2 className="subcategory-products3__title">Подкатегория3</h2>
 
-      <div className="subcategory-products2__container">
-        <div className="subcategory-products2__left">
-          <div className="subcategory-products2__price-range">
-            <div className="subcategory-products2__price-title">Цена, ₽</div>
-            <div className="subcategory-products2__price-inputs">
-              <div className="subcategory-products2__price-min">от 110</div>
-              <div className="subcategory-products2__price-divider">–</div>
-              <div className="subcategory-products2__price-max">{maxPrice}</div>
+      <div className="subcategory-products3__container">
+        <div className="subcategory-products3__left">
+          <div className="subcategory-products3__price-range">
+            <div className="subcategory-products3__price-title">Цена, ₽</div>
+            <div className="subcategory-products3__price-inputs">
+              <div className="subcategory-products3__price-min">от 110</div>
+              <div className="subcategory-products3__price-divider">–</div>
+              <div className="subcategory-products3__price-max">{maxPrice}</div>
             </div>
-            <div className="subcategory-products2__price-slider">
+            <div className="subcategory-products3__price-slider">
               <input
                 type="range"
                 min="110"
                 max="5000"
                 value={maxPrice}
                 onChange={(e) => handlePriceChange(Number(e.target.value))}
-                className="subcategory-products2__slider"
+                className="subcategory-products3__slider"
               />
             </div>
           </div>
 
-          <div className="subcategory-products2__manufacturers">
-            <div className="subcategory-products2__manufacturer-title">Производитель <IoIosArrowDown className="icon-dropdown"/></div>
+          <div className="subcategory-products3__manufacturers">
+            <div className="subcategory-products3__manufacturer-title">Производитель <IoIosArrowDown className="icon-dropdown"/></div>
             {manufacturers.map((manufacturer, index) => (
               <div
                 key={index}
-                className="subcategory-products2__manufacturer-item"
+                className="subcategory-products3__manufacturer-item"
                 onClick={() => toggleManufacturer(index)}
               >
                 {selectedManufacturers.includes(index) ? (
-                  <IoCheckboxSharp className="subcategory-products2__icon-checked" />
+                  <IoCheckboxSharp className="subcategory-products3__icon-checked" />
                 ) : (
-                  <MdCheckBoxOutlineBlank className="subcategory-products2__icon-unchecked" />
+                  <MdCheckBoxOutlineBlank className="subcategory-products3__icon-unchecked" />
                 )}
                 {manufacturer}
               </div>
             ))}
           </div>
 
-          <div className="subcategory-products2__colors">
-            <div className="subcategory-products2__colors-title">Цвет <IoIosArrowDown className="icon-dropdown"/></div>
+          <div className="subcategory-products3__colors">
+            <div className="subcategory-products3__colors-title">Цвет <IoIosArrowDown className="icon-dropdown"/></div>
             {colors.map((color, index) => (
               <div
                 key={index}
-                className="subcategory-products2__color-item"
+                className="subcategory-products3__color-item"
                 onClick={() => toggleColor(index)}
               >
                 {selectedColors.includes(index) ? (
-                  <IoCheckboxSharp className="subcategory-products2__icon-checked" />
+                  <IoCheckboxSharp className="subcategory-products3__icon-checked" />
                 ) : (
-                  <MdCheckBoxOutlineBlank className="subcategory-products2__icon-unchecked" />
+                  <MdCheckBoxOutlineBlank className="subcategory-products3__icon-unchecked" />
                 )}
                 {color}
               </div>
@@ -261,24 +261,24 @@ const toggleLike = (product: any) => {
           </div>
         </div>
 
-        <div className="subcategory-products2__wrapper">
-          <div className="subcategory-products2__sort">
-            <p className="subcategory-products2__sort-title">Сортировать:</p>
-            <div className="subcategory-products2__sort-options">
+        <div className="subcategory-products3__wrapper">
+          <div className="subcategory-products3__sort">
+            <p className="subcategory-products3__sort-title">Сортировать:</p>
+            <div className="subcategory-products3__sort-options">
               <button
-                className={`subcategory-products2__sort-price ${activeSort === 'price' ? 'active' : ''}`}
+                className={`subcategory-products3__sort-price ${activeSort === 'price' ? 'active' : ''}`}
                 onClick={() => handleSortChange('price')}
               >
                 по цене
               </button>
               <button
-                className={`subcategory-products2__sort-popularity ${activeSort === 'popularity' ? 'active' : ''}`}
+                className={`subcategory-products3__sort-popularity ${activeSort === 'popularity' ? 'active' : ''}`}
                 onClick={() => handleSortChange('popularity')}
               >
                 по популярности
               </button>
               <button
-                className={`subcategory-products2__sort-rating ${activeSort === 'rating' ? 'active' : ''}`}
+                className={`subcategory-products3__sort-rating ${activeSort === 'rating' ? 'active' : ''}`}
                 onClick={() => handleSortChange('rating')}
               >
                 по рейтингу
@@ -286,85 +286,57 @@ const toggleLike = (product: any) => {
             </div>
           </div>
 
-          <div className="subcategory-products2__list">
-            {filteredByPriceProductData.slice(0, 2).map((product) => (
-                <div key={product.id} className="subcategory-products2__card">          
-                  <div className="subcategory-products2__image-wrapper">
+          <div className="subcategory-products3__list">
+            {filteredByPriceProductData.slice(0, 4).map((product) => (
+                <div key={product.id} className="subcategory-products3__card">          
+                  <div className="subcategory-products3__image-wrapper">
                     <img
                     src={product.imageThumbnails[currentImageIndex[product.id]] || "/placeholder-image.jpg"}
                     alt={product.name}
-                    className="subcategory-products2__image"
+                    className="subcategory-products3__image"
                     />
                   </div>      
-                  <div className="subcategory-products2__right">             
-                    <h3 className="subcategory-products2__name">{product.name}</h3>
-                    <p className="subcategory-products2__article">Артикул: {product.article}</p>
-                    <div className="subcategory-products2__rating">
+                  <div className="subcategory-products3__right">             
+                    <h3 className="subcategory-products3__name">{product.name}</h3>
+                    <p className="subcategory-products3__article">Артикул: {product.article}</p>
+                    <div className="subcategory-products3__rating">
                     {Array.from({ length: Math.round(product.rating) }).map((_, index) => (
-                        <IoStarSharp key={index} className="subcategory-products2__star" />
+                        <IoStarSharp key={index} className="subcategory-products3__star" />
                     ))}
-                    </div>        
-                   
-                    <div className="subcategory-products2__tabs">
-                        <button
-                            className={`subcategory-products2__tab ${
-                                activeTabs[product.id] === "description" ? "active" : ""
-                            }`}
-                            onClick={() => handleTabChange(product.id, "description")}
-                        >
-                            Описание
-                        </button>
-                        <button
-                            className={`subcategory-products2__tab ${
-                                activeTabs[product.id] === "instruction" ? "active" : ""
-                            }`}
-                            onClick={() => handleTabChange(product.id, "instruction")}
-                        >
-                            Инструкция
-                        </button>
-                        <button
-                            className={`subcategory-products2__tab ${
-                                activeTabs[product.id] === "delivery" ? "active" : ""
-                            }`}
-                            onClick={() => handleTabChange(product.id, "delivery")}
-                        >
-                            Доставка и оплата
-                        </button>
-                    </div>                 
-                    <div className="subcategory-products2__tab-content">
-                        {getTabContent(product).map((content: string, index: number) => (
-                            <p key={index}>{content}</p>
-                        ))}
-                    </div>                   
+                    </div>                         
                   </div>
 
-                  <div className="subcategory-products2__actions">
-                    <div className="subcategory-products2__price-container">
-                      <p className="subcategory-products2__price">
+                  <div className="subcategory-products3__actions">
+                    <div className="subcategory-products3__price-container">
+                      <p className="subcategory-products3__price">
                         {product.price} {product.currency}
-                      </p>
-                      <button
-                        className="subcategory-products2__heart-button"
+                      </p>                      
+                    </div>
+                    <div className="subcategory-products3__quantity-container">
+                      <div className="subcategory-products3__quantity">
+                        <button className="subcategory-products3__quantity-button" onClick={() => decreaseQuantity(product.id)}>-</button>
+                        <span className="subcategory-products3__quantity-value">{quantities[product.id]}</span>
+                        <button className="subcategory-products3__quantity-button" onClick={() => increaseQuantity(product.id)}>+</button>
+                      </div>                      
+                    </div>
+                    <div className="subcategory-products3__add-to-cart-container">
+                        <button className="subcategory-products3__add-to-cart">В корзину</button>
+                    </div>
+                    <div className="subcategory-products3__icons-container">
+                        <button
+                        className="subcategory-products3__heart-button"
                         onClick={() => toggleLike(product)}
-                      >
+                        >
                         {likedProducts[product.id] ? (
-                            <IoHeart className="subcategory-products2__heart-icon active" />
+                            <IoHeart className="subcategory-products3__heart-icon active" />
                         ) : (
-                            <IoIosHeartEmpty className="subcategory-products2__heart-icon" />
+                            <IoIosHeartEmpty className="subcategory-products3__heart-icon" />
                         )}
-                      </button>
-                    </div>
-                    <div className="subcategory-products2__quantity-container">
-                      <div className="subcategory-products2__quantity">
-                        <button className="subcategory-products2__quantity-button" onClick={() => decreaseQuantity(product.id)}>-</button>
-                        <span className="subcategory-products2__quantity-value">{quantities[product.id]}</span>
-                        <button className="subcategory-products2__quantity-button" onClick={() => increaseQuantity(product.id)}>+</button>
-                      </div>
-                      <div className="subcategory-products2__comparison-image">
+                        </button>
+                        <div className="subcategory-products3__comparison-image">
                         <img src="/images/сравнение.svg" alt="Дополнительное изображение" />
-                      </div>
+                        </div>
                     </div>
-                    <button className="subcategory-products2__add-to-cart">В корзину</button>
                   </div>    
                 </div>
             ))}
@@ -375,5 +347,5 @@ const toggleLike = (product: any) => {
   );
 };
 
-export default SubcategoryProducts2;
+export default SubcategoryProducts3;
 

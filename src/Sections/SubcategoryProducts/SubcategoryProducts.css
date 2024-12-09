@@ -494,5 +494,14 @@
     border-radius: 50%;
     cursor: pointer;
 }
+.subcategory-products__heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 60px;
+    font-size: 24px;
+    color: var(--background-dark-blue);
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
 
 
