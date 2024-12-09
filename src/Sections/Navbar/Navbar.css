@@ -133,6 +133,7 @@
     text-decoration-skip-ink: none;
     color: var(--text-white);
   }
+  
   .icon-menu {
     width: 20px;
     height: 20px;
@@ -269,6 +270,153 @@
     margin: 0 auto;
     margin-top: 42px;    
   }
+  .navbar-middle__catalog {
+    position: relative;
+  }
+  
+  .navbar-middle__catalog-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff; /* Белый фон */
+    z-index: 9999; /* Поверх всех других элементов */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Тень для красивого эффекта */
+    border-top: 1px solid var(--background-light-gray); /* Граница сверху */
+    display: flex;
+    flex-direction: row;
+    padding: 20px; /* Внутренние отступы */
+  }
+  
+  .catalog-dropdown__left {
+    width: 25%; /* Левая колонка для списка категорий */
+    border-right: 1px solid var(--background-light-gray); /* Разделитель */
+    padding-right: 20px; /* Отступы справа */
+  }
+  
+  .catalog-dropdown__right {
+    width: 75%; /* Правая колонка для подкатегорий */
+    padding-left: 20px; /* Отступы слева */
+  }
+  
+  .catalog-category {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21px;
+    color: var(--background-dark-blue);
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .catalog-category:hover {
+    color: var(--color-primary); /* Цвет при наведении */
+  }
+  
+  .catalog-subcategories {
+    display: flex;
+    flex-wrap: wrap; /* Для расположения в несколько строк */
+    gap: 15px; /* Расстояние между элементами */
+    margin-top: 10px;
+  }
+  
+  .catalog-subcategory {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    color: var(--text-dark-blue);
+    cursor: pointer;
+  }
+  
+  .catalog-subcategory:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+  }
+  
+  .navbar-middle__catalog-dropdown:before {
+    content: "";
+    position: absolute;
+    top: -10px; /* Чтобы перекрыть тень от верхнего блока */
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #ffffff;
+  }
+  
+  /*---------*/
+  .navbar-middle__catalog {
+    position: relative;
+  }
+  
+  .navbar-middle__catalog-dropdown {
+    position: absolute;
+    top: 200%;
+    left: -200px;
+    width: 75vw;
+    background-color: #ffffff;
+    z-index: 9999;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid var(--background-light-gray);
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+  }
+  
+  .catalog-dropdown__left {
+    width: 25%;
+    border-right: 1px solid var(--background-light-gray);
+    padding-right: 20px;
+  }
+  
+  .catalog-dropdown__right {
+    width: 75%;
+    padding-left: 20px;
+  }
+  
+  .catalog-category {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21px;
+    color: var(--background-dark-blue);
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .catalog-category:hover {
+    color: var(--color-primary);
+  }
+  
+  .catalog-subcategories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .catalog-subcategory {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    color: var(--text-dark-blue);
+    cursor: pointer;
+  }
+  
+  .catalog-subcategory:hover {
+    text-decoration: underline;
+  }
+  
+  .navbar-middle__catalog-dropdown:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #ffffff;
+  }
+  
   
   @media (max-width: 1440px) {
     .navbar {

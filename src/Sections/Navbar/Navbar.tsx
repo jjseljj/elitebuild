@@ -1,11 +1,58 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoSearchSharp } from "react-icons/io5";
 import { MdMenu } from "react-icons/md";
 import Link from 'next/link';
+import CatalogComponent from '../CatalogComponent/CatalogComponent';
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+  const [isCatalogOpen, setIsCatalogOpen] = useState(false);
+  const catalogRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const toggleCatalog = () => {
+    setIsCatalogOpen((prev) => !prev);
+  };
+
+  //поиск
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      router.push(`/Subcategory3?query=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        catalogRef.current &&
+        !catalogRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsCatalogOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+
+
   return (
     <div className="navbar">
       <div className="navbar-middle__logo-mobile">
@@ -30,22 +77,42 @@ const Navbar = () => {
         <div className="navbar-middle__logo">
           <img src="/images/logo.png" alt="Логотип ПрестижСтрой" />
         </div>
-        <div className="navbar-middle__catalog">
-          <button>
+        <div className="navbar-middle__catalog" ref={catalogRef}>
+          <button
+            ref={buttonRef}
+            onClick={toggleCatalog}
+            className="navbar-middle__catalog-button"
+          >
             <MdMenu className="icon-menu" />
             <p className="navbar-middle__catalog-text">Каталог</p>
           </button>
+          {isCatalogOpen && (
+            <div className="navbar-middle__catalog-dropdown">
+              <CatalogComponent />
+            </div>
+          )}
         </div>
+        
         <div className="navbar-middle__search">
           <div className="navbar-middle__search-input-wrapper">
-            <input type="text" placeholder="Поиск по товарам" />
+            <input
+              type="text"
+              placeholder="Поиск по товарам"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
           </div>
           <div className="navbar-middle__search-button-wrapper">
-            <button className="navbar-middle__search-button">
+            <button
+              className="navbar-middle__search-button"
+              onClick={handleSearch}
+            >
               <IoSearchSharp className="navbar-middle__search-icon" />
             </button>
           </div>
         </div>
+
         <nav className="navbar-middle__icons">
         <div className="navbar-middle__service-wrapper">
         <Link href="/services">
@@ -76,7 +143,7 @@ const Navbar = () => {
           </button>
           </Link>
 
-          <Link href="/cart">
+          <Link href="/Cart">
           <button className="navbar-middle__cart">
             <div className="navbar-middle__icon-wrapper">
               <img src="/images/корзина.svg" alt="Корзина" className="navbar-middle__icon" />
