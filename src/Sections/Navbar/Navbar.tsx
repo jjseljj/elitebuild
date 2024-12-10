@@ -6,6 +6,9 @@ import { MdMenu } from "react-icons/md";
 import Link from 'next/link';
 import CatalogComponent from '../CatalogComponent/CatalogComponent';
 import { useRouter } from "next/router";
+import CitySelector from "@/src/Components/CitySelector/CitySelector";
+import ServicesDropdown from "@/src/Components/ServicesDropdown/ServicesDropdown";
+import LeaveRequestForm from "@/src/Components/LeaveRequestForm/LeaveRequestForm";
 
 const Navbar = () => {
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
@@ -51,6 +54,88 @@ const Navbar = () => {
     };
   }, []);
 
+ 
+  // Выбор города
+  const [isCitySelectorOpen, setIsCitySelectorOpen] = useState(false);
+  const [selectedCity, setSelectedCity] = useState("Выбрать город");
+
+  const citySelectorRef = useRef<HTMLDivElement>(null);
+
+  const toggleCitySelector = () => {
+    setIsCitySelectorOpen((prev) => !prev);
+  };
+
+  const handleCitySelect = (city: string) => {
+    setSelectedCity(city);
+    setIsCitySelectorOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        citySelectorRef.current &&
+        !citySelectorRef.current.contains(event.target as Node)
+      ) {
+        setIsCitySelectorOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  //меню сервисов
+  const servicesDropdownRef = useRef<HTMLDivElement>(null);
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+
+  const toggleServicesDropdown = () => {
+    setIsServicesDropdownOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        servicesDropdownRef.current &&
+        !servicesDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsServicesDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  //отправить заявку 
+  const [isLeaveRequestFormOpen, setIsLeaveRequestFormOpen] = useState(false);
+
+  const toggleLeaveRequestForm = () => {
+    setIsLeaveRequestFormOpen((prev) => !prev);
+  };
+  // Добавляем ссылку на форму заявки
+const leaveRequestFormRef = useRef<HTMLDivElement>(null);
+
+useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      leaveRequestFormRef.current &&
+      !leaveRequestFormRef.current.contains(event.target as Node)
+    ) {
+      setIsLeaveRequestFormOpen(false);
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
 
 
   return (
@@ -61,15 +146,33 @@ const Navbar = () => {
 
       {/* Верхний блок */}
       <div className="navbar-top">
-        <div className="navbar-top__location">
+        
+      <div className="navbar-top__location" onClick={toggleCitySelector}>
           <CiLocationOn className="icon-location" />
-          Выбрать город
+          {selectedCity}
           <IoMdArrowDropdown className="icon-dropdown" />
         </div>
+        {isCitySelectorOpen && (
+          <div
+            className="navbar-top__city-selector"
+            ref={citySelectorRef}
+          >
+            <CitySelector onCitySelect={handleCitySelect} />
+          </div>
+        )}
+
         <div className="navbar-top__phone">+7 (900) 999-99-99</div>
-        <button className="navbar-top__request">
+        <button className="navbar-top__request" onClick={toggleLeaveRequestForm}>
           <p className="navbar-top__request-text">Оставить заявку</p>
         </button>
+        {isLeaveRequestFormOpen && (
+          <div
+            className="navbar-leave-request-form"
+            ref={leaveRequestFormRef}
+          >
+            <LeaveRequestForm />
+          </div>
+        )}
       </div>
 
       {/* Средний блок */}
@@ -114,16 +217,20 @@ const Navbar = () => {
         </div>
 
         <nav className="navbar-middle__icons">
-        <div className="navbar-middle__service-wrapper">
-        <Link href="/services">
-          <button className="navbar-middle__service">
+        <div className="navbar-middle__service-wrapper" ref={servicesDropdownRef}>
+          <button className="navbar-middle__service" onClick={toggleServicesDropdown}>
             <div className="navbar-middle__icon-wrapper">
               <img src="/images/сервисы.svg" alt="Сервисы" className="navbar-middle__icon" />
               <p className="navbar-middle__icon-text">Сервисы</p>
             </div>
           </button>
-        </Link>
+          {isServicesDropdownOpen && (
+            <div className="navbar-middle__services-dropdown">
+              <ServicesDropdown />
+            </div>
+          )}
         </div>
+
 
           <Link href="/Comparison">
           <button className="navbar-middle__comparison">
@@ -164,7 +271,7 @@ const Navbar = () => {
         <a href="#customers" className="navbar-bottom__link">
           Покупателям
         </a>
-        <a href="#contacts" className="navbar-bottom__link">
+        <a href="#footer" className="navbar-bottom__link">
           Контакты
         </a>
       </nav>

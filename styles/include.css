@@ -22,4 +22,9 @@
 @import "@/src/Sections/CartComponent/CartComponent.css";
 
 @import "@/src/Sections/CatalogComponent/CatalogComponent.css";
+@import "@/src/Components/CitySelector/CitySelector.css";
+@import "@/src/Components/ServicesDropdown/ServicesDropdown.css";
+@import "@/src/Components/LeaveRequestForm/LeaveRequestForm.css";
 
+@import "@/src/Sections/PrivacyPolicy/PrivacyPolicy.css";
+@import "@/src/Sections/PublicOffer/PublicOffer.css";

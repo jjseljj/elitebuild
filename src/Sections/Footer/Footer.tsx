@@ -30,10 +30,10 @@ const Footer = () => {
         </div>
         <div className="footer__links-2">
                 <div className="footer__item-2">
-                    <Link href="/privacy-policy" className="footer__link-2">Политика конфиденциальности</Link>
+                    <Link href="/Privacy" className="footer__link-2">Политика конфиденциальности</Link>
                 </div>
                 <div className="footer__item-2">
-                    <Link href="/public-offer" className="footer__link-2">Договор публичной оферты</Link>
+                    <Link href="/TermsAndConditions" className="footer__link-2">Договор публичной оферты</Link>
                 </div>
         </div>         
 
