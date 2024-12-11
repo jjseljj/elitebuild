@@ -1,0 +1,104 @@
+.leave-request-form2 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: var(--background-light-blue-2);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 1167px;
+  height: 306px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.leave-request-form2__title {
+  font-family: 'Inter', sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 30.26px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #ffffff;
+  margin-top: 60px;
+  margin-bottom: 45px;
+  margin-left: 20px;
+}
+.leave-request-form2__form-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 454px;
+  height: 120px;
+  margin-left: 20px;
+}  
+
+.leave-request-form2__input.leave-request-form2__name,
+.leave-request-form2__input.leave-request-form2__phone,
+.leave-request-form2__textarea.leave-request-form2__message {
+  background-color: var(--background-light-blue-2);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18.15px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #ffffff;
+  padding: 10px;
+  width: 217px;
+  height: 50px;
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+  box-sizing: border-box;
+  resize: none;
+  margin-left: 0px;
+}
+.leave-request-form2__textarea::placeholder {
+  color: #FFFFFF;  
+  line-height: 25px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+}
+.leave-request-form2::placeholder {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18.15px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.leave-request-form2 button {
+  background-color: var(--background-dark-blue);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 217px;
+  height: 50px;
+  margin-left: 0px;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18.15px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.leave-request-form2 button:hover {
+  background-color: var(--text-dark-blue);
+}
+.leave-request-form2__right {
+  width: 560px;
+  height: 306px;
+}
+.leave-request-form2__outer-wrapper {
+  width: 607px;
+  height: 306px;
+}

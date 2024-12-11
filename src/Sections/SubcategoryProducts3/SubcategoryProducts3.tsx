@@ -9,6 +9,7 @@ import { IoStarSharp } from "react-icons/io5";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoHeart } from "react-icons/io5";
 import { saveProduct, removeProduct, getSavedProducts } from '@/services/storageHelpers';
+import { getCartItems, saveCartItem, removeCartItem } from "@/services/cartHelpers";
 
 const SubcategoryProducts3 = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState<Record<number, number>>(
@@ -133,6 +134,11 @@ const SubcategoryProducts3 = () => {
     }));
   };
   
+  //добавление товаров в корзину
+  const handleAddToCart = (product: any) => {
+    saveCartItem(product);
+    alert(`Товар "${product.name}" добавлен в корзину.`);
+  };
   
 
 
@@ -320,7 +326,11 @@ const toggleLike = (product: any) => {
                       </div>                      
                     </div>
                     <div className="subcategory-products3__add-to-cart-container">
-                        <button className="subcategory-products3__add-to-cart">В корзину</button>
+                        <button className="subcategory-products3__add-to-cart"
+                        onClick={() => handleAddToCart(product)}
+                        >
+                          В корзину
+                        </button>
                     </div>
                     <div className="subcategory-products3__icons-container">
                         <button

@@ -2,10 +2,22 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { productData } from '@/src/source';
 import { IoStarSharp } from "react-icons/io5";
+import { getCartItems, saveCartItem, removeCartItem } from "@/services/cartHelpers";
 
-const ProductDetails = () => {  
-  const product = productData[0];
+interface ProductDetailsProps {
+  productId?: string; 
+}
 
+const ProductDetails: React.FC<ProductDetailsProps> = ({ productId }) => {  
+  const staticProduct = productData[0]; 
+  const dynamicProduct = productId ? productData.find((item) => item.id === parseInt(productId)) : null;
+
+
+  const product = dynamicProduct || staticProduct; 
+
+  if (!product) {
+    return <p>Товар не найден</p>;
+  }
   // Состояние для текущей вкладки
   const [activeTab, setActiveTab] = useState('description');
 
@@ -29,8 +41,12 @@ const ProductDetails = () => {
   const increaseQuantity = () => setQuantity(prevQuantity => prevQuantity + 1);
 
   const decreaseQuantity = () => setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
-
-  
+  //добавление товаров в корзину
+  const handleAddToCart = (product: any) => {
+    saveCartItem(product);
+    alert(`Товар "${product.name}" добавлен в корзину.`);
+  };
+    
   return (
     <section className="product-details"> 
       <div className="product-details__breadcrumb">
@@ -113,7 +129,11 @@ const ProductDetails = () => {
               <button className="quantity__button" onClick={increaseQuantity}>+</button>
             </div>
             <button className="product-details__add-to-cart">
-                <p className="add-to-cart__text">В корзину</p>
+                <p className="add-to-cart__text" 
+                onClick={() => handleAddToCart({ ...product, quantity })}
+                >
+                  В корзину
+                </p>
             </button>
             <button className="product-details__compare">
                 <p className="compare__text">Сравнить</p>

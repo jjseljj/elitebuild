@@ -1,13 +1,13 @@
 import React from 'react'
 import Navbar from '@/src/Sections/Navbar/Navbar'
-import LeaveRequestForm from '../src/Components/LeaveRequestForm/LeaveRequestForm'
+import LeaveRequestForm2 from '../src/Components/LeaveRequestForm/LeaveRequestForm2'
 import Footer from '../src/Sections/Footer/Footer'
 
 const Form = () => {
   return (
     <>
   
-      <LeaveRequestForm  />    
+      <LeaveRequestForm2  />    
  
     </>
   )

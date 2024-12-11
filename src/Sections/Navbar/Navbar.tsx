@@ -8,7 +8,7 @@ import CatalogComponent from '../CatalogComponent/CatalogComponent';
 import { useRouter } from "next/router";
 import CitySelector from "@/src/Components/CitySelector/CitySelector";
 import ServicesDropdown from "@/src/Components/ServicesDropdown/ServicesDropdown";
-import LeaveRequestForm from "@/src/Components/LeaveRequestForm/LeaveRequestForm";
+import LeaveRequestForm from "@/src/Components/LeaveRequestForm/LeaveRequestForm2";
 
 const Navbar = () => {
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);

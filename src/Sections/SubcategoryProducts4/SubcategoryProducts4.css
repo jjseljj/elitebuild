@@ -1,6 +1,7 @@
 .subcategory-products4 {
     max-width: 1440px;
-    height: 1380px;
+    height: auto;
+    /*height: 1380px;*/
     margin: 0 auto;
     box-sizing: border-box;
     display: flex;
@@ -436,8 +437,7 @@
 }
 
 .subcategory-products4__list {
-    width: 1165px;
-    max-height: 600px;
+    width: 1165px;   
     height: auto;
     display: flex;
     flex-wrap: wrap;
@@ -702,10 +702,11 @@
 }
 .subcategory-products4__card2 {
     width: 1400px;
-    height: 452px;
+    height: auto;
+    /*height: 452px;*/
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    /*grid-template-rows: repeat(2, 1fr);*/
     gap: 20px;
     box-sizing: border-box;
     margin-bottom: 50px;
@@ -724,6 +725,7 @@
     background-color: var(--background-light-gray);
     display: flex;
     align-items: flex-start;
-
+    word-wrap: break-word;  
+    overflow-wrap: break-word;
   }
   

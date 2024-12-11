@@ -8,6 +8,8 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoHeart } from "react-icons/io5";
 import { getSavedProducts, saveProduct, removeProduct } from "@/services/storageHelpers";
+import { getCartItems, saveCartItem, removeCartItem } from "@/services/cartHelpers";
+
 
 const SubcategoryProducts = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState<Record<number, number>>(
@@ -120,9 +122,6 @@ const SubcategoryProducts = () => {
     });
 
 
-
-
-
     // Состояние для выбранной максимальной цены
     const [maxPrice, setMaxPrice] = useState(9999999);
 
@@ -163,6 +162,14 @@ const SubcategoryProducts = () => {
         setSavedProducts((prev) => [...prev, product]);
       }
     };
+
+    //добавление товаров в корзину
+    const handleAddToCart = (product: any) => {
+        saveCartItem(product);
+        alert(`Товар "${product.name}" добавлен в корзину.`);
+      };
+
+      
   return (
     <section className="subcategory-products">
         <div className="subcategory-products__breadcrumb">
@@ -313,7 +320,14 @@ const SubcategoryProducts = () => {
                     </p>
 
                     <div className="subcategory-products-actions">
-                    <button className="subcategory-products-actions__add-to-cart">В корзину</button>
+
+                    <button
+                        className="subcategory-products-actions__add-to-cart"
+                        onClick={() => handleAddToCart(product)}
+                        >
+                        В корзину
+                    </button>
+
                     <div className="subcategory-products-actions__quantity">
                         <button
                         className="subcategory-products-actions__button"

@@ -4,6 +4,7 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import { IoHeart } from "react-icons/io5";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { getSavedProducts, saveProduct, removeProduct, isProductSaved } from '@/services/storageHelpers';
+import { getCartItems, saveCartItem, removeCartItem } from "@/services/cartHelpers";
 
 const RelatedProducts = () => { 
   const [quantities, setQuantities] = useState<Record<number, number>>(
@@ -104,6 +105,12 @@ const RelatedProducts = () => {
     }));
   };
 
+  //добавление товаров в корзину
+  const handleAddToCart = (product: any) => {
+    saveCartItem(product);
+    alert(`Товар "${product.name}" добавлен в корзину.`);
+  };
+
   return (
     <section className="related-products">
       <h2 className="related-products__title">С этим товаром покупают</h2>
@@ -148,7 +155,11 @@ const RelatedProducts = () => {
             </p>
 
             <div className="related-products-actions">
-              <button className="related-products-actions__add-to-cart">В корзину</button>
+              <button className="related-products-actions__add-to-cart"
+              onClick={() => handleAddToCart(product)}
+              >
+                В корзину
+              </button>
               <div className="related-products-actions__quantity">
                 <button
                   className="related-products-actions__button"

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { catalogData } from '@/src/source';
+import Link from 'next/link';
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const CatalogComponent: React.FC = () => {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
@@ -20,22 +22,29 @@ const CatalogComponent: React.FC = () => {
         ))}
       </div>
       <div className="catalog__right">
-        <h3 className="catalog__category-title">
-          {catalogData[activeCategoryIndex].category}
-        </h3>
+        <div className="catalog__category-container">
+          <h3 className="catalog__category-title">
+            {catalogData[activeCategoryIndex].category}
+          </h3>
+          <Link href={`/category/${encodeURIComponent(catalogData[activeCategoryIndex].category)}`}
+          className="catalog__category-link"
+          >
+          <FaArrowRightLong />
+          </Link>
+        </div>
         <div className="catalog__subcategory-container">
-        {catalogData[activeCategoryIndex].subcategories.map((subcategory, subIndex) => (
-          <div key={subIndex} className="catalog__subcategory">
-            <h4 className="catalog__subcategory-title">{subcategory.name}</h4>
-            <ul className="catalog__product-list">
-              {subcategory.products.map((product, productIndex) => (
-                <li key={productIndex} className="catalog__product-item">
-                  {product}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+          {catalogData[activeCategoryIndex].subcategories.map((subcategory, subIndex) => (
+            <div key={subIndex} className="catalog__subcategory">
+              <h4 className="catalog__subcategory-title">{subcategory.name}</h4>
+              <ul className="catalog__product-list">
+                {subcategory.products.map((product) => (
+                  <li key={product.id} className="catalog__product-item">
+                    <Link href={`/product/${product.id}`}>{product.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </div>

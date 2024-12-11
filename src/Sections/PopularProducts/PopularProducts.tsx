@@ -3,6 +3,7 @@ import { popularProducts } from '@/src/source';
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoHeart } from "react-icons/io5";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { getCartItems, saveCartItem, removeCartItem } from "@/services/cartHelpers";
 
 const PopularProducts = () => { 
   const [quantities, setQuantities] = useState<Record<number, number>>(
@@ -80,6 +81,12 @@ const PopularProducts = () => {
     }));
   };
 
+  //добавление товаров в корзину
+  const handleAddToCart = (product: any) => {
+    saveCartItem(product);
+    alert(`Товар "${product.name}" добавлен в корзину.`);
+  };
+
   return (
     <section className="popular-products">
       <h2 className="popular-products__title">Популярные товары</h2>
@@ -125,7 +132,11 @@ const PopularProducts = () => {
             </p>
 
             <div className="popular-products-actions">
-              <button className="popular-products-actions__add-to-cart">В корзину</button>
+              <button className="popular-products-actions__add-to-cart"
+              onClick={() => handleAddToCart(product)}
+              >
+                В корзину
+              </button>
               <div className="popular-products-actions__quantity">
                 <button
                   className="popular-products-actions__button"

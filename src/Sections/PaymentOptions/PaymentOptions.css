@@ -1,9 +1,12 @@
 #payment-options {
+    max-width: 1440px;
     height: 221px;
     display: flex; 
     flex-direction: column;    
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
+    margin: 0 auto;
+    box-sizing: border-box; 
 }
 .payment-options__content {
     width: 1289px;
@@ -11,8 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
-    margin-left: 20px;
+    justify-content: flex-start;    
 }
 .payment-options__title {
     width: 561px;
@@ -102,6 +104,13 @@
     color: var(--text-dark-blue, #011023);
     text-transform: uppercase;
 }
+@media (max-width: 1440px) {
+    #payment-options {
+        width: 100%;
+        padding: 0 20px;
+    }
+}
+
 @media (max-width: 320px) {
     #payment-options {
         height: 260px;

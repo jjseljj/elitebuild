@@ -107,39 +107,39 @@ const FavoriteProducts = () => {
        </div>  
       <h2 className="favorite-products__title">Избранное</h2>
       <div className="favorites-header__controls">
-      <div className="favorites-header__categories">
-        <div className="favorites-header__categories-header">
-            <p className="favorites-header__categories-title-all">Все категории</p>
-            <p className="favorites-header__categories-title-tools">Инструменты</p>
+        <div className="favorites-header__categories">
+          <div className="favorites-header__categories-header">
+              <p className="favorites-header__categories-title-all">Все категории</p>
+              <p className="favorites-header__categories-title-tools">Инструменты</p>
+          </div>
+          <div className="favorites-header__categories-list">
+              <span className="favorites-header__categories-count-all">1</span>
+              <span className="favorites-header__categories-count-tools">1</span>
+          </div>
         </div>
-        <div className="favorites-header__categories-list">
-            <span className="favorites-header__categories-count-all">1</span>
-            <span className="favorites-header__categories-count-tools">1</span>
+        <div className="favorites-header__sort">
+          <p className="favorites-header__sort-title">Сортировать:</p>
+          <div className="favorites-header__sort-options">
+              <button
+                  className={`favorites-header__sort-price ${activeSort === 'price' ? 'active' : ''}`}
+                  onClick={() => handleSortChange('price')}
+              >
+                  по цене
+              </button>
+              <button
+                  className={`favorites-header__sort-popularity ${activeSort === 'popularity' ? 'active' : ''}`}
+                  onClick={() => handleSortChange('popularity')}
+              >
+                  по популярности
+              </button>
+              <button
+                  className={`favorites-header__sort-rating ${activeSort === 'rating' ? 'active' : ''}`}
+                  onClick={() => handleSortChange('rating')}
+              >
+                  по рейтингу
+              </button>
+              </div>
         </div>
-      </div>
-      <div className="favorites-header__sort">
-        <p className="favorites-header__sort-title">Сортировать:</p>
-        <div className="favorites-header__sort-options">
-            <button
-                className={`favorites-header__sort-price ${activeSort === 'price' ? 'active' : ''}`}
-                onClick={() => handleSortChange('price')}
-            >
-                по цене
-            </button>
-            <button
-                className={`favorites-header__sort-popularity ${activeSort === 'popularity' ? 'active' : ''}`}
-                onClick={() => handleSortChange('popularity')}
-            >
-                по популярности
-            </button>
-            <button
-                className={`favorites-header__sort-rating ${activeSort === 'rating' ? 'active' : ''}`}
-                onClick={() => handleSortChange('rating')}
-            >
-                по рейтингу
-            </button>
-            </div>
-       </div>
       </div>      
 
       <div className="favorite-products__list">

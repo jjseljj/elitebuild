@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import { productData, manufacturers, colors, dryMixes } from '@/src/source';
+import { productData, manufacturers, colors, dryMixes, categorySubcategoriesData } from '@/src/source';
 import Link from 'next/link';
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import { IoCheckboxSharp } from "react-icons/io5";
@@ -9,8 +9,25 @@ import { IoStarSharp } from "react-icons/io5";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoHeart } from "react-icons/io5";
 import { saveProduct, removeProduct, getSavedProducts } from '@/services/storageHelpers';
+import { getCartItems, saveCartItem, removeCartItem } from "@/services/cartHelpers";
 
-const SubcategoryProducts4 = () => {
+// КАТЕГОРИЯ 
+
+interface SubcategoryProducts4Props {
+  categoryData: {
+    category: string;
+    subcategories: {
+      name: string;
+      products: {
+        id: number;
+        name: string;
+      }[];
+    }[];
+  };
+  categoryName: string;
+}
+
+const SubcategoryProducts4: React.FC<SubcategoryProducts4Props> = ({ categoryData, categoryName }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState<Record<number, number>>(
     productData.reduce((acc, product) => {
       acc[product.id] = 0;
@@ -180,7 +197,12 @@ const toggleLike = (product: any) => {
   }
 };
   
-  
+  //добавление товаров в корзину
+  const handleAddToCart = (product: any) => {
+    saveCartItem(product); // Сохранение товара в корзине
+    alert(`Товар "${product.name}" добавлен в корзину.`); // Уведомление для пользователя
+  };
+
   return (
     <section className="subcategory-products4">
       <div className="subcategory-products4__breadcrumb">
@@ -190,24 +212,27 @@ const toggleLike = (product: any) => {
           <span>Каталог</span>
         </Link>
         {" / "}
-        <Link href="/category">
-          <span>Категория</span>
+        <Link href={`/category/${encodeURIComponent(categoryName.toLowerCase())}`}>
+          <span>{categoryName}</span>
         </Link>
         {" / "}
         <Link href="/subcategory2">
           <span>Подкатегория</span>
         </Link>
       </div>
+      <h2 className="subcategory-products4__title">{categoryName}</h2>
 
-      <h2 className="subcategory-products4__title">Сухие смеси</h2>
+
+      {/*<h2 className="subcategory-products4__title">Сухие смеси</h2>*/}
 
       <div className="subcategory-products4__card2">
-        {dryMixes.map((mix, index) => (
-            <div key={index} className="subcategory-products4__item2">
-            {mix}
-            </div>
+        {categoryData.subcategories.map((subcategory, index) => (
+          <div key={index} className="subcategory-products4__item2">
+            <h3 className="subcategory-products4__item-title">{subcategory.name}</h3>
+          </div>
         ))}
-        </div>
+      </div>
+
 
       <div className="subcategory-products4__container">
         <div className="subcategory-products4__left">
@@ -325,8 +350,12 @@ const toggleLike = (product: any) => {
                         <button className="subcategory-products4__quantity-button" onClick={() => increaseQuantity(product.id)}>+</button>
                       </div>                      
                     </div>
-                    <div className="subcategory-products34__add-to-cart-container">
-                        <button className="subcategory-products4__add-to-cart">В корзину</button>
+                    <div className="subcategory-products4__add-to-cart-container">
+                        <button className="subcategory-products4__add-to-cart"
+                        onClick={() => handleAddToCart(product)}
+                        >
+                          В корзину
+                        </button>
                     </div>
                     <div className="subcategory-products4__icons-container">
                         <button

@@ -3,6 +3,7 @@ import { accessories } from '@/src/source';
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoHeart } from "react-icons/io5";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { getCartItems, saveCartItem, removeCartItem } from "@/services/cartHelpers";
 
 const ProductAccessories = () => { 
   const [quantities, setQuantities] = useState<Record<number, number>>(
@@ -80,6 +81,12 @@ const ProductAccessories = () => {
     }));
   };
 
+  //добавление товаров в корзину
+  const handleAddToCart = (product: any) => {
+    saveCartItem(product);
+    alert(`Товар "${product.name}" добавлен в корзину.`);
+  };
+
   return (
     <section className="product-accessories">
       <h2 className="product-accessories__title">Вам могут понадобиться</h2>
@@ -125,7 +132,11 @@ const ProductAccessories = () => {
             </p>
 
             <div className="product-accessories-actions">
-              <button className="product-accessories-actions__add-to-cart">В корзину</button>
+              <button className="product-accessories-actions__add-to-cart"
+              onClick={() => handleAddToCart(product)}
+              >
+                В корзину
+              </button>
               <div className="product-accessories-actions__quantity">
                 <button
                   className="product-accessories-actions__button"
