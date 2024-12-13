@@ -15,7 +15,7 @@ const City = () => {
     <>
       <Navbar />
       <CitySelector onCitySelect={handleCitySelect} />
-      <Footer />
+    
     </>
   );
 };

@@ -19,7 +19,7 @@
 .payment-options__title {
     width: 561px;
     height: 48px;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 40px;
     font-weight: 500;
     line-height: 48.41px;
@@ -94,7 +94,7 @@
 .payment-options__description-text {
     width: 130px;
     height: 48px;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-weight: 500;
     line-height: 24.2px;
@@ -104,10 +104,115 @@
     color: var(--text-dark-blue, #011023);
     text-transform: uppercase;
 }
-@media (max-width: 1440px) {
+@media (max-width: 1440px) {   
     #payment-options {
+        max-width: 100%; /* 1440px */
+        height: auto; /* 221px  15.35vw*/
+        display: flex; 
+        flex-direction: column;    
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0 auto;
+        box-sizing: border-box; 
+        padding: 0 1.39vw; /* 20px */
+    }
+    .payment-options__content {
+        width: 89.51vw; /* 1289px */
+        height: 8.54vw; /* 123px */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start; 
+        margin-bottom: 6.94vw; /* 100px */
+    }
+    .payment-options__title {
+        width: 38.96vw; /* 561px */
+        height: 3.33vw; /* 48px */
+        font-family: 'Inter', sans-serif;
+        font-size: 2.78vw; /* 40px */
+        font-weight: 500;
+        line-height: 3.36vw; /* 48.41px */
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: var(--background-dark-blue, #052659);
+        text-transform: uppercase;
+        margin-bottom: 2.36vw; /* 34px */
+        white-space: nowrap;
+    }
+    
+    .payment-options__logos {
+        display: flex;
+        gap: 4.58vw; /* 66px */
+        margin-left: 8.13vw; /* 117px */
+    }
+    /*Мир*/
+    .payment-options__logo:first-child {
+        width: 11.36vw; /* 163.64px */
+        height: 3.33vw; /* 48px */
+    }
+    
+    .payment-options__logo:first-child img {
         width: 100%;
-        padding: 0 20px;
+        height: 100%;
+        object-fit: contain;
+    }
+    /*VisaMaster*/
+    .payment-options__logo:nth-child(2) {
+        width: 4.28vw; /* 61.54px */
+        height: 3.33vw; /* 48px */
+    }
+    
+    .payment-options__logo:nth-child(2) img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    /*Visa*/
+    .payment-options__logo:nth-child(3) {
+        width: 10.42vw; /* 150px */
+        height: 3.33vw; /* 48px */
+    }
+    
+    .payment-options__logo:nth-child(3) img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    /*СБП*/
+    .payment-options__logo:nth-child(4) {
+        width: 6.25vw; /* 90px */
+        height: 3.33vw; /* 48px */
+    }
+    
+    .payment-options__logo:nth-child(4) img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    /*Халва*/
+    .payment-options__logo:nth-child(5) {
+        width: 18.82vw; /* 271.09px */
+        height: 3.33vw; /* 48px */
+    }
+    
+    .payment-options__logo:nth-child(5) img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    .payment-options__description-text {
+        width: 9.03vw; /* 130px */
+        height: 3.33vw; /* 48px */
+        font-family: 'Inter', sans-serif;
+        font-size: 1.39vw; /* 20px */
+        font-weight: 500;
+        line-height: 1.68vw; /* 24.2px */
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: var(--text-dark-blue, #011023);
+        text-transform: uppercase;
     }
 }
 

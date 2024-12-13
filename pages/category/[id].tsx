@@ -1,4 +1,3 @@
-// pages/category/[id].tsx
 import React from 'react';
 import { useRouter } from 'next/router';
 import Navbar from '@/src/Sections/Navbar/Navbar';
@@ -22,11 +21,9 @@ const CategoryPage = () => {
     <>
       <Navbar />
       <SubcategoryProducts4 
-  categoryData={category} 
-  categoryName={category.category} // Передача названия категории
-/>
-
-
+        categoryData={category} 
+        categoryName={category.category} 
+       />
       <Footer />
     </>
   );

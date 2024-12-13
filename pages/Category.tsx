@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 import Navbar from '@/src/Sections/Navbar/Navbar'
 import SubcategoryProducts4 from '../src/Sections/SubcategoryProducts4/SubcategoryProducts4'
 import Footer from '../src/Sections/Footer/Footer'
@@ -13,7 +13,7 @@ const Category = () => {
   )
 }
 
-export default Category
+export default Category*/
 
 /*
 http://localhost:3000/Category

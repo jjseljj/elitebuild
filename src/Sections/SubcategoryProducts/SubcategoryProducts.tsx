@@ -10,8 +10,25 @@ import { IoHeart } from "react-icons/io5";
 import { getSavedProducts, saveProduct, removeProduct } from "@/services/storageHelpers";
 import { getCartItems, saveCartItem, removeCartItem } from "@/services/cartHelpers";
 
+interface SubcategoryProductsProps {
+    subcategoryData: {
+      name: string;
+      subcategory2: {
+        name: string;
+        products: {
+          id: number;
+          name: string;
+        }[];
+      }[];
+    };
+    subcategoryName: string;
+  }
+  
 
-const SubcategoryProducts = () => {
+  const SubcategoryProducts: React.FC<SubcategoryProductsProps> = ({
+    subcategoryData,
+    subcategoryName,
+  }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState<Record<number, number>>(
     productData.reduce((acc, product) => {
       acc[product.id] = 0;
@@ -183,12 +200,17 @@ const SubcategoryProducts = () => {
                 <span>Категория</span>
             </Link>
             {" / "}
-            <Link href="/subcategory">
-                <span>Подкатегория</span>
-            </Link>
+            <Link
+                href={`/subcategory/${encodeURIComponent(subcategoryData.name)}`}
+                className="subcategory__subcategory-link"
+                >
+                {subcategoryData.name}
+                </Link>
+
         </div>
 
-      <h2 className="subcategory-products__title">Подкатегория</h2>
+      {/*<h2 className="subcategory-products__title">Подкатегория</h2>*/}
+      <h2 className="subcategory-products__title">{subcategoryName}</h2>
 
       <div className="subcategory-products__container">
         <div className="subcategory-products__left">            

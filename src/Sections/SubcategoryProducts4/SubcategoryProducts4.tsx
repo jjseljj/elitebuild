@@ -18,15 +18,17 @@ interface SubcategoryProducts4Props {
     category: string;
     subcategories: {
       name: string;
-      products: {
-        id: number;
+      subcategory2: {
         name: string;
+        products: {
+          id: number;
+          name: string;
+        }[];
       }[];
     }[];
   };
   categoryName: string;
 }
-
 const SubcategoryProducts4: React.FC<SubcategoryProducts4Props> = ({ categoryData, categoryName }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState<Record<number, number>>(
     productData.reduce((acc, product) => {
@@ -203,6 +205,20 @@ const toggleLike = (product: any) => {
     alert(`Товар "${product.name}" добавлен в корзину.`); // Уведомление для пользователя
   };
 
+
+  const [isManufacturerVisible, setIsManufacturerVisible] = useState(true);
+  const [isColorsVisible, setIsColorsVisible] = useState(true);
+
+  //переключение видимости списка производителей.
+  const toggleManufacturerVisibility = () => {
+    setIsManufacturerVisible((prev) => !prev);
+  };
+
+  //переключение видимости списка цветов.
+  const toggleColorsVisibility = () => {
+    setIsColorsVisible((prev) => !prev);
+  };
+
   return (
     <section className="subcategory-products4">
       <div className="subcategory-products4__breadcrumb">
@@ -256,40 +272,61 @@ const toggleLike = (product: any) => {
           </div>
 
           <div className="subcategory-products4__manufacturers">
-            <div className="subcategory-products4__manufacturer-title">Производитель <IoIosArrowDown className="icon-dropdown"/></div>
-            {manufacturers.map((manufacturer, index) => (
-              <div
-                key={index}
-                className="subcategory-products4__manufacturer-item"
-                onClick={() => toggleManufacturer(index)}
-              >
-                {selectedManufacturers.includes(index) ? (
-                  <IoCheckboxSharp className="subcategory-products4__icon-checked" />
-                ) : (
-                  <MdCheckBoxOutlineBlank className="subcategory-products4__icon-unchecked" />
-                )}
-                {manufacturer}
-              </div>
-            ))}
+            <div
+              className="subcategory-products4__manufacturer-title"
+              onClick={toggleManufacturerVisibility}
+            >
+              Производитель <IoIosArrowDown className={`icon-dropdown ${isManufacturerVisible ? 'rotated' : ''}`} />
+            </div>
+            {isManufacturerVisible && (
+              <>
+                {manufacturers.map((manufacturer, index) => (
+                  <div
+                    key={index}
+                    className="subcategory-products4__manufacturer-item"
+                    onClick={() => toggleManufacturer(index)}
+                  >
+                    {selectedManufacturers.includes(index) ? (
+                      <IoCheckboxSharp className="subcategory-products4__icon-checked" />
+                    ) : (
+                      <MdCheckBoxOutlineBlank className="subcategory-products4__icon-unchecked" />
+                    )}
+                    {manufacturer}
+                  </div>
+                ))}
+              </>
+            )}
           </div>
 
+
           <div className="subcategory-products4__colors">
-            <div className="subcategory-products4__colors-title">Цвет <IoIosArrowDown className="icon-dropdown"/></div>
-            {colors.map((color, index) => (
-              <div
-                key={index}
-                className="subcategory-products4__color-item"
-                onClick={() => toggleColor(index)}
-              >
-                {selectedColors.includes(index) ? (
-                  <IoCheckboxSharp className="subcategory-products4__icon-checked" />
-                ) : (
-                  <MdCheckBoxOutlineBlank className="subcategory-products4__icon-unchecked" />
-                )}
-                {color}
-              </div>
-            ))}
+            <div
+              className="subcategory-products4__colors-title"
+              onClick={toggleColorsVisibility}
+            >
+              Цвет <IoIosArrowDown className={`icon-dropdown ${isColorsVisible ? 'rotated' : ''}`} />
+            </div>
+            {isColorsVisible && (
+              <>
+                {colors.map((color, index) => (
+                  <div
+                    key={index}
+                    className="subcategory-products4__color-item"
+                    onClick={() => toggleColor(index)}
+                  >
+                    {selectedColors.includes(index) ? (
+                      <IoCheckboxSharp className="subcategory-products4__icon-checked" />
+                    ) : (
+                      <MdCheckBoxOutlineBlank className="subcategory-products4__icon-unchecked" />
+                    )}
+                    {color}
+                  </div>
+                ))}
+              </>
+            )}
           </div>
+
+
         </div>
 
         <div className="subcategory-products4__wrapper">

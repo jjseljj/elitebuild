@@ -44,7 +44,7 @@
   
   .catalog__category-title {
     font-family: 'Inter', sans-serif;
-    font-size: 20px;
+    font-size: 40px;
     font-weight: 500;
     line-height: 25px;
     color: var(--background-dark-blue);
@@ -80,16 +80,19 @@
     color: var(--background-dark-blue);
     text-decoration: underline;
   }
-  .catalog__subcategory-title {
+  .catalog__subcategory-title, 
+  .catalog__subcategory-link {
     font-family: 'Inter', sans-serif;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
-    line-height: 30.26px;
+    line-height: 1;
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+    text-decoration: none;
     color: var(--text-dark-blue);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
   }
   .catalog__product-list {
     list-style: none;
@@ -121,7 +124,44 @@
     gap: 8px;
     text-decoration: none;
     color: inherit;
-    font-size: 14px;
+    font-size: 20px;
     color: var(--text-dark-blue);
     margin-top: 5px;
   }
+  .catalog__category-arrow-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark-blue);
+    text-decoration: none;
+    font-size: 20px;
+    margin-top: 5px;
+    position: relative;
+    top: 3px;
+}
+
+  .catalog__subcategory2-title{
+    text-decoration: none;
+    color: var(--text-dark-blue);
+    font-weight: 700;
+    margin-bottom: 5px;
+    margin-top: 25px;
+  }
+  .catalog__toggle-button {
+    background-color: white !important; 
+    border: none;
+    color: #888888;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    margin-top: 5px;   
+  }
+  .catalog__toggle-button:hover {
+    color: #888888;
+    background-color: transparent; 
+  }
+  
