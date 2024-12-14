@@ -51,7 +51,7 @@ const LeaveRequestForm2 = () => {
         </form>    
       </div>
       <div className="leave-request-form2__right">
-        <img src="/images/менеджер.png" alt="Оператор" />
+        <img className="leave-request-form2__image" src="/images/менеджер.png" alt="Оператор" />
       </div>
     </div>
   );

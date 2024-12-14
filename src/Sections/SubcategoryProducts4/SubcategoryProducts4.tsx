@@ -243,9 +243,14 @@ const toggleLike = (product: any) => {
 
       <div className="subcategory-products4__card2">
         {categoryData.subcategories.map((subcategory, index) => (
-          <div key={index} className="subcategory-products4__item2">
-            <h3 className="subcategory-products4__item-title">{subcategory.name}</h3>
-          </div>
+          <Link 
+            key={index}
+            href={`/subcategory/${encodeURIComponent(subcategory.name)}`}
+          >
+            <div className="subcategory-products4__item2">
+              <h3 className="subcategory-products4__item-title">{subcategory.name}</h3>
+            </div>
+          </Link>
         ))}
       </div>
 
@@ -325,8 +330,6 @@ const toggleLike = (product: any) => {
               </>
             )}
           </div>
-
-
         </div>
 
         <div className="subcategory-products4__wrapper">
@@ -356,6 +359,7 @@ const toggleLike = (product: any) => {
 
           <div className="subcategory-products4__list">
             {filteredByPriceProductData.slice(0, 4).map((product) => (
+              <Link key={product.id} href={`/product/${product.id}`} passHref>
                 <div key={product.id} className="subcategory-products4__card">          
                   <div className="subcategory-products4__image-wrapper">
                     <img
@@ -382,14 +386,27 @@ const toggleLike = (product: any) => {
                     </div>
                     <div className="subcategory-products4__quantity-container">
                       <div className="subcategory-products4__quantity">
-                        <button className="subcategory-products4__quantity-button" onClick={() => decreaseQuantity(product.id)}>-</button>
+                        <button className="subcategory-products4__quantity-button" 
+                        onClick={(e) => {
+                          e.preventDefault(); // Чтобы предотвратить переход при уменьшении количества
+                          decreaseQuantity(product.id);
+                        }}
+                        >-</button>
                         <span className="subcategory-products4__quantity-value">{quantities[product.id]}</span>
-                        <button className="subcategory-products4__quantity-button" onClick={() => increaseQuantity(product.id)}>+</button>
+                        <button className="subcategory-products4__quantity-button" 
+                        onClick={(e) => {
+                          e.preventDefault(); // Чтобы предотвратить переход при увеличении количества
+                          increaseQuantity(product.id);
+                        }}
+                        >+</button>
                       </div>                      
                     </div>
                     <div className="subcategory-products4__add-to-cart-container">
                         <button className="subcategory-products4__add-to-cart"
-                        onClick={() => handleAddToCart(product)}
+                        onClick={(e) => {
+                          e.preventDefault(); // Чтобы предотвратить переход при добавлении в корзину
+                          handleAddToCart(product);
+                        }}
                         >
                           В корзину
                         </button>
@@ -397,7 +414,10 @@ const toggleLike = (product: any) => {
                     <div className="subcategory-products4__icons-container">
                         <button
                         className="subcategory-products4__heart-button"
-                        onClick={() => toggleLike(product)}
+                        onClick={(e) => {
+                          e.preventDefault(); // Чтобы предотвратить переход при лайке
+                          toggleLike(product);
+                        }}
                         >
                         {likedProducts[product.id] ? (
                             <IoHeart className="subcategory-products4__heart-icon active" />
@@ -411,6 +431,7 @@ const toggleLike = (product: any) => {
                     </div>
                   </div>    
                 </div>
+              </Link>
             ))}
             </div>
         </div>

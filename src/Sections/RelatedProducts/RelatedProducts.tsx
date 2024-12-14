@@ -27,18 +27,6 @@ const RelatedProducts = () => {
     setLikedProducts(liked);
   }, []);
 
-  /*const toggleLike = (product: any) => {
-    const isLiked = likedProducts[product.id];
-    if (isLiked) {
-      removeProduct(product.id);
-      setLikedProducts((prev) => ({ ...prev, [product.id]: false }));
-      setSavedProducts((prev) => prev.filter((p) => p.id !== product.id));
-    } else {
-      saveProduct(product);
-      setLikedProducts((prev) => ({ ...prev, [product.id]: true }));
-      setSavedProducts((prev) => [...prev, product]);
-    }
-  };*/
   const toggleLike = (product: any) => {
     const isLiked = likedProducts[product.id];
   
@@ -110,6 +98,8 @@ const RelatedProducts = () => {
     saveCartItem(product);
     alert(`Товар "${product.name}" добавлен в корзину.`);
   };
+
+  
 
   return (
     <section className="related-products">

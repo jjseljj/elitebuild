@@ -70,7 +70,7 @@ interface SubcategoryProductsProps {
     }));
   };
 
-  // Состояние для выбранных производителей и цветов
+    // Состояние для выбранных производителей и цветов
     const [selectedManufacturers, setSelectedManufacturers] = useState<number[]>([]);
     const [selectedColors, setSelectedColors] = useState<number[]>([]);
 
@@ -186,7 +186,20 @@ interface SubcategoryProductsProps {
         alert(`Товар "${product.name}" добавлен в корзину.`);
       };
 
-      
+
+    const [isManufacturerVisible, setIsManufacturerVisible] = useState(true);
+    const [isColorsVisible, setIsColorsVisible] = useState(true);
+
+    //переключение видимости списка производителей.
+    const toggleManufacturerVisibility = () => {
+        setIsManufacturerVisible((prev) => !prev);
+    };
+
+    //переключение видимости списка цветов.
+    const toggleColorsVisibility = () => {
+        setIsColorsVisible((prev) => !prev);
+    };
+
   return (
     <section className="subcategory-products">
         <div className="subcategory-products__breadcrumb">
@@ -235,39 +248,58 @@ interface SubcategoryProductsProps {
 
         
             <div className="subcategory-products__manufacturers">
-                <div className="subcategory-products__manufacturer-title">Производитель <IoIosArrowDown className="icon-dropdown"/></div>
-                {manufacturers.map((manufacturer, index) => (
-                    <div
-                    key={index}
-                    className="subcategory-products__manufacturer-item"
-                    onClick={() => toggleManufacturer(index)}
-                    >
-                    {selectedManufacturers.includes(index) ? (
-                        <IoCheckboxSharp className="subcategory-products__icon-checked" />
-                    ) : (
-                        <MdCheckBoxOutlineBlank className="subcategory-products__icon-unchecked" />
-                    )}
-                    {manufacturer}
-                    </div>
-                ))}
+                <div
+                    className="subcategory-products__manufacturer-title"
+                    onClick={toggleManufacturerVisibility}
+                >
+                    Производитель <IoIosArrowDown className={`icon-dropdown ${isManufacturerVisible ? 'rotated' : ''}`} />
                 </div>
-
-                <div className="subcategory-products__colors">
-                <div className="subcategory-products__colors-title">Цвет <IoIosArrowDown className="icon-dropdown"/></div>
-                {colors.map((color, index) => (
-                    <div
-                    key={index}
-                    className="subcategory-products__color-item"
-                    onClick={() => toggleColor(index)}
-                    >
-                    {selectedColors.includes(index) ? (
-                        <IoCheckboxSharp className="subcategory-products__icon-checked" />
-                    ) : (
-                        <MdCheckBoxOutlineBlank className="subcategory-products__icon-unchecked" />
-                    )}
-                    {color}
+                {isManufacturerVisible && (
+                    <div className="subcategory-products__manufacturer-list">
+                        {manufacturers.map((manufacturer, index) => (
+                            <div
+                                key={index}
+                                className="subcategory-products__manufacturer-item"
+                                onClick={() => toggleManufacturer(index)}
+                            >
+                                {selectedManufacturers.includes(index) ? (
+                                    <IoCheckboxSharp className="subcategory-products__icon-checked" />
+                                ) : (
+                                    <MdCheckBoxOutlineBlank className="subcategory-products__icon-unchecked" />
+                                )}
+                                {manufacturer}
+                            </div>
+                        ))}
                     </div>
-                ))}
+                )}
+            </div>
+
+
+            <div className="subcategory-products__colors">
+                <div
+                    className="subcategory-products__colors-title"
+                    onClick={toggleColorsVisibility}
+                >
+                    Цвет <IoIosArrowDown className={`icon-dropdown ${isColorsVisible ? 'rotated' : ''}`} />
+                </div>
+                {isColorsVisible && (
+                    <div className="subcategory-products__color-list">
+                        {colors.map((color, index) => (
+                            <div
+                                key={index}
+                                className="subcategory-products__color-item"
+                                onClick={() => toggleColor(index)}
+                            >
+                                {selectedColors.includes(index) ? (
+                                    <IoCheckboxSharp className="subcategory-products__icon-checked" />
+                                ) : (
+                                    <MdCheckBoxOutlineBlank className="subcategory-products__icon-unchecked" />
+                                )}
+                                {color}
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
 
@@ -298,11 +330,15 @@ interface SubcategoryProductsProps {
 
             <div className="subcategory-products__list">
             {filteredByPriceProductData.map((product) => (
+                <Link key={product.id} href={`/product/${product.id}`}>
                 <div key={product.id} className="subcategory-products__item">
                     <div className="subcategory-products__image-wrapper">                        
                     <button
                         className="subcategory-products__image-button subcategory-products__image-button--prev"
-                        onClick={() => handleImageChange(product.id, 'prev')}
+                        onClick={(e) => {
+                            e.preventDefault(); // Чтобы предотвратить переход при смене картинки
+                            handleImageChange(product.id, 'prev');
+                          }}
                     >
                         <MdKeyboardArrowLeft className="subcategory-products__icon--prev" />
                     </button>
@@ -318,14 +354,20 @@ interface SubcategoryProductsProps {
                     />
                     <button
                         className="subcategory-products__image-button subcategory-products__image-button--next"
-                        onClick={() => handleImageChange(product.id, 'next')}
+                        onClick={(e) => {
+                            e.preventDefault(); // Чтобы предотвратить переход при смене картинки
+                            handleImageChange(product.id, 'next');
+                          }}
                     >
                         <MdKeyboardArrowRight className="subcategory-products__icon--next" />
                     </button>
                     </div> 
                     <button
                         className="subcategory-products__heart-button"
-                        onClick={() => toggleLike(product)}
+                        onClick={(e) => {
+                            e.preventDefault(); // Чтобы предотвратить переход при лайке
+                            toggleLike(product);
+                          }}
                         >
                         {likedProducts[product.id] ? (
                             <IoHeart className="subcategory-products__heart-icon active" />
@@ -345,7 +387,10 @@ interface SubcategoryProductsProps {
 
                     <button
                         className="subcategory-products-actions__add-to-cart"
-                        onClick={() => handleAddToCart(product)}
+                        onClick={(e) => {
+                            e.preventDefault(); // Чтобы предотвратить переход при добавлении в корзину
+                            handleAddToCart(product);
+                          }}
                         >
                         В корзину
                     </button>
@@ -353,20 +398,27 @@ interface SubcategoryProductsProps {
                     <div className="subcategory-products-actions__quantity">
                         <button
                         className="subcategory-products-actions__button"
-                        onClick={() => decreaseQuantity(product.id)}
+                        onClick={(e) => {
+                            e.preventDefault(); // Чтобы предотвратить переход при уменьшении количества
+                            decreaseQuantity(product.id);
+                          }}
                         >
                         -
                         </button>
                         <p className="subcategory-products-actions__value">{quantities[product.id]}</p>
                         <button
                         className="subcategory-products-actions__button"
-                        onClick={() => increaseQuantity(product.id)}
+                        onClick={(e) => {
+                            e.preventDefault(); // Чтобы предотвратить переход при увеличении количества
+                            increaseQuantity(product.id);
+                          }}
                         >
                         +
                         </button>
                     </div>
                     </div>
                 </div>
+                </Link>
                 ))}
             </div>
         </div>
