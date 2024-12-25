@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link';
 
 const DeliveryOptions: React.FC = () => {
   return (
@@ -43,7 +44,9 @@ const DeliveryOptions: React.FC = () => {
             </div>
           </div>
           <div className="delivery-options__button-container">
-            <button className="delivery-options__button">Правила доставки</button>
+            <Link href="/Delivery">
+              <button className="delivery-options__button">Правила доставки</button>
+            </Link>
           </div>
         </div>
       </div>
