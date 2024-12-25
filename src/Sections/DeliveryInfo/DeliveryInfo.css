@@ -74,7 +74,12 @@
     height: 414px;
     margin-top: 100px;
     margin-bottom: 100px;
-    background-color: var(--background-light-gray);
+    /*background-color: var(--background-light-gray);*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
   }
   .delivery-map {
     display: flex;
@@ -93,6 +98,39 @@
     line-height: 21.78px;
     text-align: center;
     color: var(--text-dark-blue);
+  }
+  .delivery-info {
+    padding: 20px;
+  }
+  
+  .delivery-info__breadcrumb {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .delivery-info__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .delivery-info__columns {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .delivery-map {
+    margin-top: 20px;
+  }
+  
+  .delivery-map__text {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .delivery-map__container {
+    width: 100%;
+    height: 400px;
   }
   
   

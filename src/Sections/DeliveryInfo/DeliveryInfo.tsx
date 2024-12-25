@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
 
 const DeliveryInfo = () => {
   return (
@@ -44,9 +45,18 @@ const DeliveryInfo = () => {
         </div>
       </div>
       <div className="delivery-map">
-        <p className="delivery-map__text">
-            Карта пунктов выдачи СДЭК
-        </p>
+        {/*<p className="delivery-map__text">Карта пунктов выдачи СДЭК</p>*/}
+        <YMaps>
+          <Map
+            defaultState={{ center: [55.76, 37.64], zoom: 10 }}
+            className="delivery-map__container"
+          >
+            <Placemark
+              geometry={[55.76, 37.64]}
+              properties={{ hintContent: "Пункт выдачи СДЭК" }}
+            />
+          </Map>
+        </YMaps>
       </div>
     </section>
   );
