@@ -1,5 +1,6 @@
 #product-action {
-    height: 664px;
+    /*height: 664px;*/
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,12 +9,14 @@
 
 .product-action__content {
     width: 1400px;
-    height: 484px;
+    /*height: 484px;*/
+    height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: repeat(auto-fill, minmax(232px, 1fr));
     gap: 20px 20px;   
     margin-bottom: 25px;
+    
 }
 .product-action__block {
     width: 690px;
@@ -23,8 +26,14 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    opacity: 1;
+    transform: scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
-
+.product-action__block--visible {
+    opacity: 1;
+    transform: scale(1);
+}
 .product-action__block--1 {
     background-image: url('/images/Акция.png');
 }
@@ -41,6 +50,18 @@
     background-image: url('/images/Акция (4).png');
 }
 
+.product-action__block--5 {
+    background-image: url('/images/Акция.png');
+}
+.product-action__block--6 {
+    background-image: url('/images/Акция.png');
+}
+.product-action__block--7 {
+    background-image: url('/images/Акция.png');
+}
+.product-action__block--8 {
+    background-image: url('/images/Акция.png');
+}
 
 .product-action__show-all {
     width: 320px;
@@ -79,7 +100,8 @@
     
     .product-action__content {
         width: 97.22vw; /* 1400px */
-        height: 33.61vw; /* 484px */
+        /*height: 33.61vw; /* 484px */
+        height: auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
@@ -161,6 +183,16 @@
     .product-action__block--2,
     .product-action__block--3,
     .product-action__block--4 {
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 117px;
+        background-image: url('/images/Акция_2.png');
+    }
+    .product-action__block--5,
+    .product-action__block--6,
+    .product-action__block--7,
+    .product-action__block--8 {
         background-size: cover;
         background-position: center;
         width: 100%;

@@ -15,11 +15,13 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId }) => {
 
   const product = dynamicProduct || staticProduct; 
 
-  if (!product) {
-    return <p>Товар не найден</p>;
-  }
-  // Состояние для текущей вкладки
-  const [activeTab, setActiveTab] = useState('description');
+ // Состояние для текущей вкладки
+const [activeTab, setActiveTab] = useState('description');
+
+if (!product) {
+  return <p>Товар не найден</p>;
+}
+
 
   // Выбор контента вкладки из productData
   const getTabContent = () => {

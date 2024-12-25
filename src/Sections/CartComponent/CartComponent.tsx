@@ -8,6 +8,8 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import { IoHeart } from "react-icons/io5";
 import { getSavedProducts, saveProduct, removeProduct } from "@/services/storageHelpers";
 import { getCartItems, saveCartItem, updateCartItem, removeCartItem } from "@/services/cartHelpers";
+import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
+
 
 const CartComponent: React.FC = () => {
   const [selectedAll, setSelectedAll] = useState(false);
@@ -229,7 +231,18 @@ const CartComponent: React.FC = () => {
 
       <div className="cart__delivery-method">
         <h2 className="cart__section-title">Способ доставки</h2>
-        <div className="cart__delivery-map">Карта пунктов выдачи СДЭК</div>
+        {/*<div className="cart__delivery-map">Карта пунктов выдачи СДЭК</div>*/}
+        <div className="cart__delivery-map">
+  <YMaps>
+    <Map
+      defaultState={{ center: [55.76, 37.64], zoom: 10 }}
+      className="cart__delivery-map-container"
+    >
+      <Placemark geometry={[55.76, 37.64]} properties={{ hintContent: "Пункт выдачи СДЭК" }} />
+    </Map>
+  </YMaps>
+</div>
+
       </div>
 
       <div className="cart__payment-method">
