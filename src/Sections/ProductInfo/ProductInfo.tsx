@@ -11,17 +11,16 @@ interface ProductDetailsProps {
 const ProductDetails: React.FC<ProductDetailsProps> = ({ productId }) => {  
   const staticProduct = productData[0]; 
   const dynamicProduct = productId ? productData.find((item) => item.id === parseInt(productId)) : null;
-
-
   const product = dynamicProduct || staticProduct; 
+  const [activeTab, setActiveTab] = useState('description');
+  const [quantity, setQuantity] = useState(1);
+  const increaseQuantity = () => setQuantity(prevQuantity => prevQuantity + 1);
+  const decreaseQuantity = () => setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
 
- // Состояние для текущей вкладки
-const [activeTab, setActiveTab] = useState('description');
-
-if (!product) {
-  return <p>Товар не найден</p>;
-}
-
+  if (!product) {
+    return <p>Товар не найден</p>;
+  }
+   
 
   // Выбор контента вкладки из productData
   const getTabContent = () => {
@@ -36,13 +35,9 @@ if (!product) {
         return [];
     }
   };
+ 
 
-
-  const [quantity, setQuantity] = useState(1);
-
-  const increaseQuantity = () => setQuantity(prevQuantity => prevQuantity + 1);
-
-  const decreaseQuantity = () => setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+  
   //добавление товаров в корзину
   const handleAddToCart = (product: any) => {
     saveCartItem(product);

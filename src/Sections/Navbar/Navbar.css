@@ -253,6 +253,7 @@
     justify-content: flex-start;
     margin-left: 220px;
     gap: 24px;
+    text-decoration: none
   }
   .navbar-bottom__link {
     width: 94px;
@@ -268,7 +269,13 @@
     white-space: nowrap;
     text-decoration: none;
     margin-right: 20px;
+    text-decoration: none
   }
+  .navbar-bottom a {
+    text-decoration: none; 
+    color: inherit; 
+  }
+  
   .navbar-line {
     width: 1402.02px;
     border: 0.2px solid #909090 !important;

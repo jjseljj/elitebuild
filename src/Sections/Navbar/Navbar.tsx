@@ -279,15 +279,9 @@ useEffect(() => {
 
       {/* Нижний блок */}
       <nav className="navbar-bottom">
-        <a href="/AboutCompany" className="navbar-bottom__link">
-          О компании
-        </a>
-        <a href="/ForCustomers" className="navbar-bottom__link">
-          Покупателям
-        </a>
-        <a href="/Contacts" className="navbar-bottom__link">
-          Контакты
-        </a>
+      <Link href="/AboutCompany/" className="navbar-link">О компании</Link>
+      <Link href="/ForCustomers/" className="navbar-link">Для клиентов</Link>
+      <Link href="/Contacts/" className="navbar-link">Контакты</Link>
       </nav>
     
       <div className="navbar-line"></div>
