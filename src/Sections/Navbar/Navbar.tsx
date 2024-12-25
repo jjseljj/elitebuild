@@ -18,7 +18,10 @@ const Navbar = () => {
   const toggleCatalog = () => {
     setIsCatalogOpen((prev) => !prev);
   };
-
+  const closeLeaveRequestForm = () => {
+    setIsLeaveRequestFormOpen(false);
+  };
+  
   //поиск
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
@@ -168,13 +171,20 @@ useEffect(() => {
           <p className="navbar-top__request-text">Оставить заявку</p>
         </button>
         {isLeaveRequestFormOpen && (
-          <div
-            className="navbar-leave-request-form"
-            ref={leaveRequestFormRef}
-          >
-            <LeaveRequestForm />
-          </div>
-        )}
+  <>
+    <div
+      className="modal-overlay"
+      onClick={() => setIsLeaveRequestFormOpen(false)} // Закрытие при клике по затемнению
+    ></div>
+    <div
+      className="navbar-leave-request-form"
+      ref={leaveRequestFormRef}
+    >
+      <LeaveRequestForm />
+    </div>
+  </>
+)}
+
       </div>
 
       {/* Средний блок */}

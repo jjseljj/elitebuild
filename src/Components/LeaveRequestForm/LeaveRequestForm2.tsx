@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const LeaveRequestForm2 = () => {
+  
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
@@ -11,6 +12,7 @@ const LeaveRequestForm2 = () => {
   };
 
   return (
+    <div className="modal-overlay"> {/* Слой затемнения */}
     <div className="leave-request-form2">
       <div className="leave-request-form2__outer-wrapper">
         <h2 className="leave-request-form2__title">Оставить заявку</h2>
@@ -53,6 +55,7 @@ const LeaveRequestForm2 = () => {
       <div className="leave-request-form2__right">
         <img className="leave-request-form2__image" src="/images/менеджер.png" alt="Оператор" />
       </div>
+    </div>
     </div>
   );
 };

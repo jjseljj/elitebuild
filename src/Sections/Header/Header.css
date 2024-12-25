@@ -199,6 +199,9 @@
       a.header__block-button {
         text-decoration: none !important;        
       }
+      .header__block-content .header__block-button {
+        text-decoration: none !important;
+    }
     
     
       .header__block-image img {
