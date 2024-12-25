@@ -194,11 +194,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        text-decoration: none !important; 
       }
+      a.header__block-button {
+        text-decoration: none !important;        
+      }
+    
+    
       .header__block-image img {
         width: 23.61vw; /* 340px */
         height: 15.21vw; /* 219px */
-        object-fit: cover; /* Обеспечивает корректное отображение */
+        object-fit: cover; 
       }
       
       

@@ -139,10 +139,12 @@ useEffect(() => {
 
 
   return (
-    <div className="navbar">
-      <div className="navbar-middle__logo-mobile">
-        <img src="/images/logo.png" alt="Логотип ПрестижСтрой" />
-      </div>
+    <div className="navbar">       
+        <div className="navbar-middle__logo-mobile">
+          <Link href="/">
+          <img src="/images/logo.png" alt="Логотип ПрестижСтрой" />
+          </Link>
+        </div>      
 
       {/* Верхний блок */}
       <div className="navbar-top">
@@ -178,7 +180,9 @@ useEffect(() => {
       {/* Средний блок */}
       <div className="navbar-middle">
         <div className="navbar-middle__logo">
-          <img src="/images/logo.png" alt="Логотип ПрестижСтрой" />
+          <Link href="/">
+            <img src="/images/logo.png" alt="Логотип ПрестижСтрой" />
+          </Link>
         </div>
         <div className="navbar-middle__catalog" ref={catalogRef}>
           <button
@@ -265,13 +269,13 @@ useEffect(() => {
 
       {/* Нижний блок */}
       <nav className="navbar-bottom">
-        <a href="#about" className="navbar-bottom__link">
+        <a href="/AboutCompany" className="navbar-bottom__link">
           О компании
         </a>
-        <a href="#customers" className="navbar-bottom__link">
+        <a href="/ForCustomers" className="navbar-bottom__link">
           Покупателям
         </a>
-        <a href="#footer" className="navbar-bottom__link">
+        <a href="/Contacts" className="navbar-bottom__link">
           Контакты
         </a>
       </nav>

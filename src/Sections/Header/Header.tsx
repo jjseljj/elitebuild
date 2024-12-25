@@ -1,4 +1,6 @@
 import React from "react";
+import Link from 'next/link';
+import { catalogData } from '@/src/source';
 
 const Header: React.FC = () => {
   return (
@@ -7,7 +9,12 @@ const Header: React.FC = () => {
         <div className="header__block">
             <div className="header__block-content">
                 <p className="header__block-title">Стройматериалы</p>
-                <button className="header__block-button">Товары</button>
+                <Link
+                    href={`/category/${encodeURIComponent("Стройматериалы")}`}
+                    className="header__block-button"
+                    >
+                    Товары
+                </Link>
             </div>
             <div className="header__block-image">
                 <img src="/images/стройматериалы 2.png" alt="Стройматериалы" />
@@ -16,7 +23,12 @@ const Header: React.FC = () => {
         <div className="header__block">
             <div className="header__block-content">
                 <p className="header__block-title">Инструменты</p>
-                <button className="header__block-button">Товары</button>
+                <Link
+                    href={`/category/${encodeURIComponent("Инструменты")}`}
+                    className="header__block-button"
+                    >
+                    Товары
+                </Link>
             </div>
             <div className="header__block-image">
                 <img src="/images/инструменты 1.png" alt="Инструменты" />
@@ -25,7 +37,12 @@ const Header: React.FC = () => {
         <div className="header__block">
             <div className="header__block-content">
                 <p className="header__block-title">Электрика</p>
-                <button className="header__block-button">Товары</button>
+                <Link
+                    href={`/category/${encodeURIComponent("Электрика")}`}
+                    className="header__block-button"
+                    >
+                    Товары
+                </Link>
             </div>
             <div className="header__block-image">
                 <img src="/images/Электрика- 1.png" alt="Электрика" />
@@ -35,7 +52,12 @@ const Header: React.FC = () => {
         <div className="header__block">
             <div className="header__block-content">
                 <p className="header__block-title">Хозяйственный инвентарь</p>
-                <button className="header__block-button">Товары</button>
+                <Link
+                    href={`/category/${encodeURIComponent("Инструменты")}`}
+                    className="header__block-button"
+                    >
+                    Товары
+                </Link>
             </div>
             <div className="header__block-image">
                 <img src="/images/хоз инвентарь.png" alt="Хозяйственный инвентарь" />

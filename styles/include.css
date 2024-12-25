@@ -28,3 +28,7 @@
 
 @import "@/src/Sections/PrivacyPolicy/PrivacyPolicy.css";
 @import "@/src/Sections/PublicOffer/PublicOffer.css";
+
+@import "@/src/Sections/AboutUs/AboutUs.css";
+@import "@/src/Sections/ForCustomersComponent/ForCustomersComponent.css";
+@import "@/src/Sections/ContactsComponent/ContactsComponent.css";
