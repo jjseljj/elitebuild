@@ -9,7 +9,7 @@ import { IoHeart } from "react-icons/io5";
 import { getSavedProducts, saveProduct, removeProduct } from "@/services/storageHelpers";
 import { getCartItems, saveCartItem, updateCartItem, removeCartItem } from "@/services/cartHelpers";
 import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
-
+import PaymentModal from "@/src/Components/PaymentModal/PaymentModal";
 
 const CartComponent: React.FC = () => {
   const [selectedAll, setSelectedAll] = useState(false);
@@ -19,7 +19,10 @@ const CartComponent: React.FC = () => {
   const [likedProducts, setLikedProducts] = useState<Record<number, boolean>>({});
   const [savedProducts, setSavedProducts] = useState<any[]>([]);
   const [cartItems, setCartItems] = useState<any[]>([]);
-
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  const handleOpenPaymentModal = () => setIsPaymentModalOpen(true);
+  const handleClosePaymentModal = () => setIsPaymentModalOpen(false);
+  
   useEffect(() => {
     const saved = getSavedProducts();
     setSavedProducts(saved);
@@ -223,8 +226,9 @@ const CartComponent: React.FC = () => {
             </div>
           </div>
           <div className="cart__checkout-button-wrapper">
-            <button className="cart__checkout-button">Оформить заказ</button>
+            <button className="cart__checkout-button" onClick={handleOpenPaymentModal}>Оформить заказ</button>
           </div>
+          {isPaymentModalOpen && <PaymentModal isOpen={true} onClose={handleClosePaymentModal} />}
         </div>
       </div>
 
